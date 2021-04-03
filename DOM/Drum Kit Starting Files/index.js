@@ -3,6 +3,7 @@ for (var i = 0; i < document.querySelectorAll(".drum").length; i++) {
 
     var buttonInnerHtml = this.innerHTML;
     handleClick(buttonInnerHtml);
+    buttonAnimation(buttonInnerHtml);
 
 });
 }
@@ -10,6 +11,7 @@ for (var i = 0; i < document.querySelectorAll(".drum").length; i++) {
 document.addEventListener("keydown", function(event) {
 
   handleClick(event.key);
+  buttonAnimation(event.key);
 
 });
 
@@ -54,4 +56,15 @@ function handleClick(key) {
 
     default: console.log(buttonInnerHtml);
   }
+}
+
+
+function buttonAnimation(currentKey){
+  var activeButton = document.querySelector("." + currentKey);
+  activeButton.classList.add("pressed");
+
+  setTimeout(function() {
+    activeButton.classList.remove("pressed");
+  }, 100);
+
 }
